@@ -9,6 +9,9 @@ class NegociacaoController {
         this._listaNegociacoes = new ListaNegociacoes(); //Instanciando lista de negociações
         this._negociacoesView = new NegociacoesView($('#negociacoesView')); //Instanciando tabela de negociações para exibir na view (consulta no dom o id negociacoesView e passa como argumento)
         this._negociacoesView.update(this._listaNegociacoes); //Passando como parâmetro todos os dados de negociações
+        this._mensagem = new Mensagem(); //Instanciando uma mensagem
+        this._MensagemView = new MensagemView($('#mensagemView')); //Instanciando uma mensagem view com o elemento de id #mensagemView que foi colocado no html
+        this._MensagemView.update(this._mensagem); //Atualizando MensagemView com a mensagem que foi obtida da instância de mensagem.
     }
 
     adiciona(event) {
@@ -16,6 +19,8 @@ class NegociacaoController {
         event.preventDefault();
         this._listaNegociacoes.adiciona(this._criaNegociacao()); //Chamando método privado _criaNegociacao
         this._negociacoesView.update(this._listaNegociacoes); //adicionando dados na tabela após inclusão de novo dado.
+        this._mensagem.texto = 'Negociação adicionada com sucesso'; //Adicionando um texto para a mensagem
+        this._MensagemView.update(this._mensagem); //Pegando a mensagem formada e inserindo na MensagemView
         this._limpaFormulario();
     }
 

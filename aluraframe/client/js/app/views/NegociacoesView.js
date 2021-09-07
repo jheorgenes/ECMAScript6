@@ -1,10 +1,11 @@
-class NegociacoesView {
+class NegociacoesView extends View { //Herdando de View
 
     constructor(elemento) {
-        this._elemento = elemento; //associando o elemento do dom ao template criado aqui
+
+        super(elemento); //Enviando dados obtidos desse construtor para a classe PAI que terá acesso a esses dados.
     }
 
-    _template(model) {
+    template(model) {
 
         return `
                 <table class="table table-hover table-bordered">
@@ -37,7 +38,4 @@ class NegociacoesView {
                 `;
     }
 
-    update(model) {
-        this._elemento.innerHTML = this._template(model);
-    }
 }
